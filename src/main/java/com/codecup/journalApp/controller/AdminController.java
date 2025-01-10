@@ -1,5 +1,6 @@
 package com.codecup.journalApp.controller;
 
+import com.codecup.journalApp.cache.AppCache;
 import com.codecup.journalApp.entity.User;
 import com.codecup.journalApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,11 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
+
+    @Autowired
+    private AppCache appCache;
+
+
     @GetMapping("/all-users")
     public ResponseEntity<?> getAllUsers() {
         List<User> all = userService.getAll();
@@ -30,8 +36,8 @@ public class AdminController {
         userService.saveAdmin(user);
     }
 
-    /*@GetMapping("clear-app-cache")
+   @GetMapping("clear-app-cache")
     public void clearAppCache(){
         appCache.init();
-    }*/
+    }
 }

@@ -1,10 +1,12 @@
 package com.codecup.journalApp.controller;
 
+import com.codecup.journalApp.api.response.WeatherResponse;
 import com.codecup.journalApp.entity.JournalEntry;
 import com.codecup.journalApp.entity.User;
 import com.codecup.journalApp.repository.UserRepository;
 import com.codecup.journalApp.service.JournalEntryService;
 import com.codecup.journalApp.service.UserService;
+import com.codecup.journalApp.service.WeatherService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +29,10 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+
+    @Autowired
+    private WeatherService weatherService;
+
     @PutMapping
     public ResponseEntity<?> updateUser(@RequestBody User user) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -46,7 +52,7 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-   /*@GetMapping
+   @GetMapping
     public ResponseEntity<?> greeting() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         WeatherResponse weatherResponse = weatherService.getWeather("Mumbai");
@@ -55,6 +61,6 @@ public class UserController {
             greeting = ", Weather feels like " + weatherResponse.getCurrent().getFeelslike();
         }
         return new ResponseEntity<>("Hi " + authentication.getName() + greeting, HttpStatus.OK);
-    }*/
+    }
 
 }
