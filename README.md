@@ -73,5 +73,3 @@ spring.jpa.hibernate.ddl-auto=update
 Remove or comment out the H2 config.
 
 
-✨ This project is maintained by Khushi Gupta
-
